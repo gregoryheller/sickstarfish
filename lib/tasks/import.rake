@@ -29,7 +29,7 @@ namespace :import do
       config.consumer_key    ="3RxqXSt4dMu4Yp2y1bniAQ"
       config.consumer_secret = "LjKC12HbhR2eeZ9nHQcIngCwW7CWFIuTqnYpp7Dahw"
     end
-    %w{sickstarfish sickseastar sickseastars deadstarfish deadseastar deadseastars}.each do |tag|
+    %w{waterspotter}.each do |tag|
       client.search("#{tag} -rt").each do |tweet|
         t = Tweet.new(
           :tweet_type => "twitter",
@@ -55,7 +55,7 @@ namespace :import do
       config.client_id     = ENV['INSTAGRAM_CLIENT_ID']
       config.client_secret = ENV['INSTAGRAM_CLIENT_SECRET']
     end
-    %w{sickstarfish sickseastar sickseastars deadstarfish deadseastar deadseastars nosickstarfish nosickseastar nosickseastars beachstarfish beachseastar beachseastars}.each do |tag|
+    %w{waterspotter}.each do |tag|
       Instagram.tag_recent_media(tag).each do |media|
         next unless media.location && media.user
         next unless media.type == "image"
